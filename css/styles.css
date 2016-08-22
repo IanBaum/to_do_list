@@ -1,0 +1,19 @@
+#show-details {
+  display: none;
+}
+
+.task {
+  color: #0088cc;
+  cursor: pointer;
+}
+
+.task:hover {
+  color: #00ffcc;
+}
+
+input[type=checkbox] + label{
+  text-decoration: none;
+}
+input[type=checkbox]:checked + label{
+  text-decoration: line-through;
+}

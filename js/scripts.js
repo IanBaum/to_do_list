@@ -3,8 +3,8 @@ $(document).ready(function(){
   function Task(name, details) {
     this.taskName = name;
     this.taskDetails = details;
+    this.isDone = false;
   }
-
   $("#userInput").submit(function(event) {
     event.preventDefault();
 
@@ -13,6 +13,20 @@ $(document).ready(function(){
 
     var newTask = new Task(taskName, taskDetails);
 
-    $("#tasks").append("<li><span class='task'>" + newTask.taskName + "</span></li>")
-  })
+    $("#tasks").append("<div class='checkbox'><input type='checkbox'><label class='task'>" + newTask.taskName + "</label></div>")
+
+    $("#taskInput").val("");
+    $("#detailsInput").val("");
+
+    $(".task").last().click(function() {
+      $("#show-details").show();
+      $("#show-details h2").text(newTask.taskName);
+      $("#show-details p").text(newTask.taskDetails);
+    });
+  });
+
+  $("#tasks").submit(function(event) {
+    event.preventDefault();
+    $(".checkbox input:checked").parent().remove();
+  });
 });
